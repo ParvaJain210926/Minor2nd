@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1034152085313",
+    "project_id": "minor2nd-b1ab1",
+    "storage_bucket": "minor2nd-b1ab1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034152085313:android:cbc908f9b53574957503c0",
+        "android_client_info": {
+          "package_name": "com.example.minor2nd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9pHGNlS22IX7z-vsZo1JbD5kebQjp9pE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
