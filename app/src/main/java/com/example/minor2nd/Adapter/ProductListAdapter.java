@@ -1,5 +1,6 @@
 package com.example.minor2nd.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         return new viewholder(inflate);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull ProductListAdapter.viewholder holder, int position) {
         holder.TitleTxt.setText(items.get(position).getTitle());

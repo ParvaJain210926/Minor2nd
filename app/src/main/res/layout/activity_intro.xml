@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.IntroActivity"
-    android:background="#78ACE1">
+    android:background="@drawable/blue_background">
 
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_width="298dp"
         android:layout_height="72dp"
         android:fontFamily="@font/boogaloo"
-        android:text="JAL DHARA"
+        android:text="@string/jal_dhara"
         android:textAlignment="center"
         android:textColor="#3F1F78"
         android:textSize="60sp"
@@ -53,7 +53,7 @@
         android:layout_marginBottom="40dp"
         android:background="@color/button_sign"
         android:fontFamily="@font/akaya_telivigala"
-        android:text="SIGN UP"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="25sp"
         app:backgroundTint="@null"
@@ -74,7 +74,7 @@
         android:layout_marginBottom="40dp"
         android:background="@color/button_sign"
         android:fontFamily="@font/akaya_telivigala"
-        android:text="SIGN IN"
+        android:text="@string/sign_in"
         android:textColor="@color/white"
         android:textSize="25sp"
         app:backgroundTint="@null"

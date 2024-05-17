@@ -12,7 +12,7 @@
         android:id="@+id/emptyCartTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Cart is Empty"
+        android:text="@string/cart_empty"
         android:textColor="@color/blue_grey"
 
         android:visibility="gone"
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="Cart"
+                android:text="@string/cart"
                 android:textAlignment="center"
                 android:textColor="@color/blue_grey"
                 android:textSize="24sp"
@@ -48,6 +48,8 @@
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
 
                 android:clipToPadding="false" />
 
@@ -58,14 +60,14 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextText"
+                    android:id="@+id/coupanEditText"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/grey_background"
                     android:ems="10"
-                    android:hint="Enter your Code"
+                    android:hint="@string/enter_your_code"
                     android:inputType="text"
                     android:textAlignment="center"
 
@@ -73,14 +75,27 @@
                     android:textColorHint="@color/blue_grey"
                     android:textSize="14sp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button"
-                    style="@android:style/Widget.Button"
+                <ImageView
+                    android:id="@+id/promoCancel"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/close_circle_svgrepo_com"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="12dp"
+                    app:backgroundTint="@null" />
+
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/buttonApplyc"
                     android:layout_width="145dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:paddingStart="8dp"
+                    style="@style/Widget.AppCompat.Button"
+                    android:textOff="@string/apply_coupan"
                     android:background="@drawable/re_button_background"
-                    android:text="Apply Coupan"
-                    android:textColor="@color/white" />
+                    android:textOn="@string/coupan_applied"
+                    android:textColor="@color/white"
+                    />
 
             </LinearLayout>
 
@@ -89,8 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:text="Order Summary"
+                android:layout_weight="0"
+                android:text="@string/order_summary"
                 android:textColor="@color/blue_grey"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -109,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="SubTotal"
+                    android:text="@string/subtotal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -119,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Delivery"
+                    android:text="@string/delivery"
                     app:layout_constraintStart_toStartOf="@+id/textView12"
                     app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -129,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="TotalTax"
+                    android:text="@string/totaltax"
                     app:layout_constraintStart_toStartOf="@+id/textView13"
                     app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -139,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="/- Rs"
+                    android:text="@string/rs"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView12" />
 
@@ -149,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="/- Rs"
+                    android:text="@string/rs"
                     app:layout_constraintEnd_toEndOf="@+id/totalFeesTxt"
                     app:layout_constraintTop_toBottomOf="@+id/totalFeesTxt" />
 
@@ -159,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="/- Rs"
+                    android:text="@string/rs"
                     app:layout_constraintEnd_toEndOf="@+id/delivertFeeTxt"
                     app:layout_constraintTop_toBottomOf="@+id/delivertFeeTxt" />
 
@@ -181,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Total"
+                    android:text="@string/total"
                     app:layout_constraintStart_toStartOf="@+id/textView14"
                     app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -192,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="8dp"
-                    android:text="/- Rs"
+                    android:text="@string/rs"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -207,7 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/re_button_background"
-                android:text="Place Order"
+                android:text="@string/place_order"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>

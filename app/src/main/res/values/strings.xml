@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">Minor2nd</string>
+    <string name="app_name">Jal Dhara : Sign of PurityS</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="jal_dhara">JAL DHARA</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="cart_empty">Your Cart is Empty</string>
+    <string name="cart">Cart</string>
+    <string name="enter_your_code">Enter your Code</string>
+    <string name="apply_coupan">Apply Coupan</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="subtotal">SubTotal</string>
+    <string name="delivery">Delivery</string>
+    <string name="totaltax">TotalTax</string>
+    <string name="rs">/- Rs</string>
+    <string name="total">Total</string>
+    <string name="place_order">Place Order</string>
+    <string name="coupan_applied">Coupan Applied</string>
+
+    <!-- Wallet activity -->
+    <string name="title_activity_place_order">PlaceOrderActivity</string>
+    <string name="add_to_google_wallet_button_content_description">Add to Google Wallet</string>
+    <string name="sample_pass" translatable="false">Sample Pass</string>
+    <string name="google_wallet_status_unavailable" translatable="false">Unfortunately, Google
+        Wallet is not available on this phone.
+    </string>
+    <string name="add_google_wallet_success" translatable="false">The pass was added successfully!
+    </string>
+    <string name="add_google_wallet_cancelled" translatable="false">The user cancelled adding the
+        pass to Google Wallet.
+    </string>
+    <string name="add_google_wallet_unknown_error" translatable="false">An unknown error occurred
+        when adding pass to Google Wallet.
+    </string>
 </resources>

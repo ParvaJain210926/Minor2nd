@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         getWindow().setStatusBarColor(getResources().getColor(R.color.black));
 
         initLocation();
@@ -81,20 +82,27 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
-        //binding.fullNameTxt.setText();
+
         binding.cartBtnImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,CartActivity.class));
             }
         });
+        binding.viewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ListProductActivity.class));
+            }
+        });
     }
 
     private void initPopular() {
         DatabaseReference myRef= database.getReference("Products");
-        binding.progressBarBB.setVisibility(View.GONE);
+
         ArrayList <FProducts> list = new ArrayList<>();
         Query query= myRef.orderByChild("BestFood").equalTo(true);
+        binding.progressBarBB.setVisibility(View.VISIBLE);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

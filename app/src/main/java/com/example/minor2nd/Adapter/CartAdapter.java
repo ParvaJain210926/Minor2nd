@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.CenterInside;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.minor2nd.Domain.FProducts;
 import com.example.minor2nd.Helper.ChangeNumberItemsListener;
@@ -50,7 +52,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
         holder.total.setText("Quantity" + list.get(position).getNumberInCart()+" X "+ list.get(position).getPrice());
         holder.num.setText(list.get(position).getNumberInCart()+"");
 
-        Glide.with(holder.itemView.getContext()).load(list.get(position).getImagePath()).transform(new CenterCrop(),new RoundedCorners(30))
+        Glide.with(holder.itemView.getContext()).load(list.get(position).getImagePath()).transform(new FitCenter(),new RoundedCorners(30))
                 .into(holder.picCart);
 
 
