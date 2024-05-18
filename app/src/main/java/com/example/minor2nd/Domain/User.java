@@ -1,22 +1,23 @@
 package com.example.minor2nd.Domain;
 
-import com.example.minor2nd.Activity.MainActivity;
 
-public class User  extends MainActivity {
-    public String userName;
-    public String userPassword;
+public class User {
 
-    public String email;
+    public  String username;
+    public  String password;
+    public  String email;
 
+    public User(){}
 
-    public User(String userName, String userPassword,String email){
-        this.userName=userName;
-        this.email=email;
-        this.userPassword=userPassword;
+    public User (String username,String password,String email)
+    {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+
     }
-
-    public String getUserName() {
-
-        return userName;
+    public String getUser(){
+        return username;
     }
 }
+

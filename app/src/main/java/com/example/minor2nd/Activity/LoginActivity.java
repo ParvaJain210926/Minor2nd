@@ -34,6 +34,12 @@ ActivityLoginBinding binding;
                 startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
             }
         });
+        binding.textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
+            }
+        });
         binding.LoginButton.setOnClickListener(v -> {
             String email=binding.editTextSignInUser.getText().toString();
             String password=binding.editTextSignInPassword.getText().toString();

@@ -61,6 +61,11 @@ public class SignUpActivity extends BaseActivity {
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     public void onComplete(Task <AuthResult> task){
                         if(task.isSuccessful()){
+                            User user = new User(Name,password,email);
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+
                             Log.i(TAG, "Complete");
                             Toast.makeText(SignUpActivity.this, "User registered Successfully", Toast.LENGTH_SHORT).show();
                             SignUpActivity.this.startActivity(new Intent(SignUpActivity.this, MainActivity.class));

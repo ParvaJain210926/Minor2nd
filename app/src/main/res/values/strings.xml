@@ -31,4 +31,6 @@
     <string name="add_google_wallet_unknown_error" translatable="false">An unknown error occurred
         when adding pass to Google Wallet.
     </string>
+    <string name="reset_password">Reset Password</string>
+    <string name="enter_email">Enter Email</string>
 </resources>

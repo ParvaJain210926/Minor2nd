@@ -1,6 +1,8 @@
 package com.example.minor2nd.Activity;
 
 
+
+
 import androidx.annotation.NonNull;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -25,16 +27,19 @@ import com.example.minor2nd.Domain.Time;
 import com.example.minor2nd.R;
 import com.example.minor2nd.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
-    private ActivityMainBinding binding;
+     ActivityMainBinding binding;
+     FirebaseAuth mAuth;
 
 
 
@@ -53,7 +58,6 @@ public class MainActivity extends BaseActivity {
         initCategory();
         initPopular();
         setVariable();
-
 
 
         // My experiment Location
@@ -92,9 +96,40 @@ public class MainActivity extends BaseActivity {
         binding.viewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ListProductActivity.class));
+                startActivity(new Intent(MainActivity.this, AllProductsActivity.class));
             }
         });
+
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+            usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String username = dataSnapshot.child("username").getValue(String.class);
+                        if (username != null) {
+                            binding.fullNameTxt.setText(username);
+                            // Now you have the current active username
+                            // You can use it as needed
+                        }
+                    } else {
+
+                        // User data doesn't exist or couldn't be retrieved
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Handle errors
+                }
+            });
+        } else {
+            // No user is signed in
+        }
     }
 
     private void initPopular() {

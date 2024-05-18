@@ -1,17 +1,17 @@
 package com.example.minor2nd.Activity;
 
 import androidx.annotation.NonNull;
-
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.minor2nd.Adapter.ProductListAdapter;
 import com.example.minor2nd.Domain.FProducts;
-
+import com.example.minor2nd.databinding.ActivityAllProductsBinding;
 import com.example.minor2nd.databinding.ActivityListProductBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,47 +21,28 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ListProductActivity extends BaseActivity {
-    ActivityListProductBinding binding;
+public class AllProductsActivity extends BaseActivity {
+    ActivityAllProductsBinding binding;
     private RecyclerView.Adapter adapterListProduct;
-    private int categoryId;
-    private String categoryName;
-    private String searchText;
-    private boolean inSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityListProductBinding.inflate(getLayoutInflater());
+        binding =ActivityAllProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.bckButton.setOnClickListener(v -> {
-            startActivity(new Intent(ListProductActivity.this,MainActivity.class));
+        initList();
+        binding.bckButtonAllProducts.setOnClickListener(v -> {
+            startActivity(new Intent(AllProductsActivity.this, MainActivity.class));
             finish();
         });
 
-
-        getIntentExtra();
-        initList();
-        binding.titleProductTxt.setText(categoryName);
-        setVariable();
     }
-
-    private void setVariable() {
-    }
-
     private void initList() {
         DatabaseReference myRef=database.getReference("Products");
-        binding.progressBar.setVisibility(View.VISIBLE);
+        binding.progressBarAll.setVisibility(View.VISIBLE);
         ArrayList<FProducts> list= new ArrayList<>();
 
-        Query query;
-
-        if(inSearch){
-            query=myRef.orderByChild("Title").startAt(searchText).endAt(searchText+'\uf8ff');
-        }
-        else {
-            query = myRef.orderByChild("CategoryId").equalTo(categoryId);
-        }
+        Query query = myRef.getDatabase().getReference("Products");
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -70,28 +51,20 @@ public class ListProductActivity extends BaseActivity {
                         list.add(issue.getValue(FProducts.class));
                     }
                     if(list.size()>0){
-                        binding.productListView.setLayoutManager(new GridLayoutManager(ListProductActivity.this,2));
+                        binding.productListView.setLayoutManager(new GridLayoutManager(AllProductsActivity.this,2));
                         adapterListProduct = new ProductListAdapter(list);
                         binding.productListView.setAdapter(adapterListProduct);
 
                     }
-                    binding.progressBar.setVisibility(View.GONE);
+                    binding.progressBarAll.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AllProductsActivity.this,"Failed",Toast.LENGTH_SHORT).show();
 
             }
         });
-    }
-
-    private void getIntentExtra() {
-        categoryId=getIntent().getIntExtra("CategoryId",0);
-        categoryName=getIntent().getStringExtra("Category");
-        searchText=getIntent().getStringExtra("text");
-        inSearch=getIntent().getBooleanExtra("isSearch",false);
-
-
     }
 }
